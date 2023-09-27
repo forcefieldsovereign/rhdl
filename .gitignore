@@ -17,3 +17,6 @@ Cargo.lock
 # Added by cargo
 
 /target
+
+# Test VCD output
+rhdl/test_enum.vcd
