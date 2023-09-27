@@ -118,12 +118,16 @@ fn test_position_case() {
 #[test]
 fn test_state_case() {
     let foo = Packet::State(State::Boom);
-    dbg!(foo.path(&[Path::EnumPayload("State")]));
+    dbg!(foo.path(&[Path::EnumPayload("State")]).unwrap());
     assert_eq!(
-        foo.path(&[Path::EnumPayload("State"), Path::EnumDiscriminant])
-            .unwrap()
-            .0,
-        b5::from(0b01010).bin()
+        foo.path(&[
+            Path::EnumPayload("State"),
+            Path::Index(0),
+            Path::EnumDiscriminant
+        ])
+        .unwrap()
+        .0,
+        b3::from(0b010).bin()
     );
     assert_eq!(
         foo.path(&[Path::EnumDiscriminant]).unwrap().0,

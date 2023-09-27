@@ -682,7 +682,7 @@ mod tests {
             ])
             .unwrap()
             .0,
-            b5::from(0b01010).bin()
+            b3::from(0b010).bin()
         );
         assert_eq!(
             foo.path(&[Path::EnumDiscriminant]).unwrap().0,
